@@ -1,0 +1,72 @@
+body{
+    background-image: url(images/tenor.gif);
+    background-repeat: no-repeat;
+    background-color: #1a1a1a;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #2ffb06;
+    font-family:'Montagu Slab';
+    font-weight: 500;
+}
+
+#form-container{
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+    background-color: #262625;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+#form__container__header {
+    border-radius: 10px 10px 0 0;
+    padding: 30px;
+    text-align: center;
+    background-color: #363739;
+    margin: 0;
+    font-size: 18px;
+    font-size: 300;
+    line-height: 0;
+  }
+
+ #ct{
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 9999;
+    font-size: 20px;
+    font-family: 'Averia Sans Libre', sans-serif;
+    color: #effb06;
+ } 
+  #form__content__wrapper{
+    padding: 20px;
+}
+
+input {
+    box-sizing: border-box;
+    color: #111011;
+    width: 100%;
+    margin: 0;
+    border: none;
+    border-radius: 5px;
+    padding: 16px 20px;
+    font-family:'Montagu Slab';
+    font-size: 18px;
+    background-color: #ffffff;
+    margin-top: 32px;
+  }
+ 
+ 
+  input[type='submit'] {
+    background-color: #00FFFF;
+  }
+
+ #X:hover{
+    box-shadow: 0 0 5px rgb(5, 234, 219),
+                0 0 25px rgb(5, 234, 219),
+                0 0 30px rgb(5, 234, 219);
+}
