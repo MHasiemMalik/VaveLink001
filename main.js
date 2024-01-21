@@ -165,15 +165,16 @@ let toggleCamera = async () => {
 
 //from ChatGpt
 let toggleMic = async () => {
-    let audioTrack = localStream.getAudioTracks()[0]; // Get the first audio track
+    await requestMicrophonePermissions();
+
+    let audioTrack = localStream.getAudioTracks()[0];
 
     if (audioTrack) {
-        audioTrack.enabled = !audioTrack.enabled; // Toggle the audio track state
+        audioTrack.enabled = !audioTrack.enabled;
         document.getElementById('mic-btn').style.backgroundColor = audioTrack.enabled
             ? 'rgb(131, 4, 251, 0.9)'
             : 'rgb(255, 80, 80)';
 
-        // If there's an active peer connection, update the remote audio track state
         if (peerConnection && peerConnection.getReceivers().length > 0) {
             let remoteAudioTrack = peerConnection.getReceivers()[0].track;
             if (remoteAudioTrack) {
@@ -183,6 +184,15 @@ let toggleMic = async () => {
     }
 };
 
+async function requestMicrophonePermissions() {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        // You can handle logic after obtaining permission if needed
+    } catch (error) {
+        console.error('Error requesting microphone permissions:', error);
+        // Handle permission error (e.g., display a message to the user)
+    }
+}
   
 window.addEventListener('beforeunload', leaveChannel)
 
