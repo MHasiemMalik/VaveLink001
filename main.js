@@ -163,6 +163,39 @@ let toggleCamera = async () => {
     }
 }
 
+//from ChatGpt
+let toggleMic = async () => {
+    let audioTrack = localStream.getAudioTracks()[0]; // Get the first audio track
+
+    if (audioTrack) {
+        audioTrack.enabled = !audioTrack.enabled; // Toggle the audio track state
+        document.getElementById('mic-btn').style.backgroundColor = audioTrack.enabled
+            ? 'rgb(131, 4, 251, 0.9)'
+            : 'rgb(255, 80, 80)';
+
+        // If there's an active peer connection, update the remote audio track state
+        if (peerConnection && peerConnection.getReceivers().length > 0) {
+            let remoteAudioTrack = peerConnection.getReceivers()[0].track;
+            if (remoteAudioTrack) {
+                remoteAudioTrack.enabled = audioTrack.enabled;
+            }
+        }
+    }
+};
+
+  
+window.addEventListener('beforeunload', leaveChannel)
+
+document.getElementById('camera-btn').addEventListener('click', toggleCamera)
+document.getElementById('mic-btn').addEventListener('click', toggleMic)
+
+init()
+
+
+/*
+
+Actual code:
+
 let toggleMic = async () => {
     let audioTrack = localStream.getTracks().find(track => track.kind === 'audio')
 
@@ -174,10 +207,4 @@ let toggleMic = async () => {
         document.getElementById('mic-btn').style.backgroundColor = 'rgb(131, 4, 251, 0.9)'
     }
 }
-  
-window.addEventListener('beforeunload', leaveChannel)
-
-document.getElementById('camera-btn').addEventListener('click', toggleCamera)
-document.getElementById('mic-btn').addEventListener('click', toggleMic)
-
-init()
+*/ 
