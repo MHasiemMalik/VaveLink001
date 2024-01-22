@@ -41,6 +41,7 @@ body{
     font-size: 20px;
     font-family: 'Averia Sans Libre', sans-serif;
     color: #effb06;
+    opacity: 0.3;
  } 
   #form__content__wrapper{
     padding: 20px;
